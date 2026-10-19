@@ -1,0 +1,64 @@
+def main():
+    # Definição do total de entrevistados (Conforme o item 3: 50 entrevistados. 
+    # Dica para o item 8: você pode alterar temporariamente para 10 para testes rápidos).
+    TOTAL_ENTREVISTADOS = 50
+    
+    # Contadores para as opções exigidas
+    qtd_excelente = 0
+    qtd_ruim = 0
+    
+    print("=" * 45)
+    print("      SISTEMA DE PESQUISA DE SATISFAÇÃO - TUDOWEB")
+    print("=" * 45)
+    print(f"Iniciando a pesquisa com {TOTAL_ENTREVISTADOS} entrevistados...\n")
+    
+    # Estrutura de repetição FOR para coletar os dados
+    for i in range(1, TOTAL_ENTREVISTADOS + 1):
+        print(f"--- Entrevistado {i} de {TOTAL_ENTREVISTADOS} ---")
+        
+        # Coleta de Nome
+        nome = input("Digite o nome do entrevistado: ")
+        
+        # Coleta de Idade com tratamento simples de erro numérico
+        while True:
+            try:
+                idade = int(input("Digite a idade do entrevistado: "))
+                if idade > 0:
+                    break
+                print("A idade deve ser maior que zero.")
+            except ValueError:
+                print("Por favor, digite um número válido para a idade.")
+        
+        # Coleta e validação da Opinião usando estruturas de decisão
+        while True:
+            print("\nOpções de Avaliação:")
+            print("  [1] EXCELENTE")
+            print("  [2] BOM")
+            print("  [3] RUIM")
+            opiniao = input("Digite o número correspondente à opinião (1, 2 ou 3): ")
+            
+            if opiniao == '1':
+                qtd_excelente += 1
+                break
+            elif opiniao == '2':
+                # 'BOM' é computado na pesquisa, mas não possui contagem obrigatória no relatório final
+                break
+            elif opiniao == '3':
+                qtd_ruim += 1
+                break
+            else:
+                print("⚠️ Opção inválida! Digite apenas 1, 2 ou 3.\n")
+                
+        print("-" * 45 + "\n")
+        
+    # Exibição dos resultados finais exigidos
+    print("=" * 45)
+    print("           RELATÓRIO FINAL DA PESQUISA")
+    print("=" * 45)
+    print(f"Total de entrevistados na pesquisa: {TOTAL_ENTREVISTADOS}")
+    print(f"a) Quantidade de respostas 'EXCELENTE': {qtd_excelente}")
+    print(f"b) Quantidade de respostas 'RUIM': {qtd_ruim}")
+    print("=" * 45)
+
+if __name__ == "__main__":
+    main()
